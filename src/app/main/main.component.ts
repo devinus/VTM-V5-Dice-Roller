@@ -106,7 +106,11 @@ export class MainComponent {
      * rolls 1d10 and returns result (1-10)
      */
     rollDie(): number {
-        return Math.floor(Math.random() * 10) + 1;
+        let arr = new Uint8Array(1);
+        window.crypto.getRandomValues(arr);
+
+        let num = arr[0] / (0xff + 1);
+        return Math.floor(num * 10) + 1;
     }
 
     /**
